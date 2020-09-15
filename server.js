@@ -59,29 +59,12 @@ app.post("/userregistration",(req,res) =>{
          console.log('Other error in the query')
        }
      }else{
-       // sendSMS(params.user_mobile_number,"Thanks for register with to-do-list By chethan");
         return res.send({ error: false, message: 'New user has been created successfully.' });
      }
      
   });
 });
 
-function sendSMS(user_mobile_number,message){
-  // Download the helper library from https://www.twilio.com/docs/node/install
-  // Your Account Sid and Auth Token from twilio.com/console
-  // DANGER! This is insecure. See http://twil.io/secure
-  const accountSid = 'AC53e14c54cccc2353a6eb09e9c07e33a2';
-  const authToken = '4d50e23af709ddcd90c5c4b5b154f1a9';
-  const client = require('twilio')(accountSid, authToken);
-
-    client.messages
-    .create({
-      body: message,
-      from: '+16782937751',
-      to: user_mobile_number
-    })
-  .then(message => console.log(message.sid));
-}
 
 // login API 
 app.post("/login",(req,res) => {
